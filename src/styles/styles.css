@@ -1,0 +1,93 @@
+@import './reset.css';
+
+body {
+  height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 4fr 25rem;
+  height: 100%;
+  align-items: start;
+}
+
+.projects {
+  margin: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 25px;
+}
+
+.sidebar-wrapper {
+  position: relative;
+  height: 100%;
+  margin: 25px;
+}
+
+.sidebar {
+  border-radius: 15px;
+  position: sticky;
+  overflow-y: auto;
+  height: calc(100vh - 50px);
+  min-height: 500px;
+  max-height: 1000px;
+  top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #bbbbbbb3;
+  gap: 1rem;
+}
+
+.sidebar-icon svg,
+.project-card__icon svg {
+  width: 100px;
+  height: 100px;
+  fill: #bbbbbbb3;
+}
+
+.project-create:hover .project-card__icon svg,
+.project-create:hover .project-create__title {
+  fill: #adadadd6;
+  color: #adadadd6;
+}
+
+.sidebar-title_null,
+.project-create__title {
+  color: #bbbbbbb3;
+}
+
+.project-card {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  height: 20rem;
+  cursor: pointer;
+  border: 3px solid rgb(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.project-card.highlighted {
+  border: 3px solid rgb(71, 132, 255);
+  cursor: default;
+}
+
+.project-create {
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 3px solid #bbbbbbb3;
+}
+
+.project-create:hover {
+  cursor: pointer;
+  border: 3px solid #adadadd6;
+}
