@@ -14,4 +14,12 @@ export class Project {
   removeTodo(id) {
     this.todos = this.todos.filter((item) => id !== item.id);
   }
+
+  setTitle(newTitle) {
+    this.title = newTitle;
+  }
+
+  setDescription(newDescription) {
+    this.description = newDescription;
+  }
 }

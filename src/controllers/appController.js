@@ -10,8 +10,13 @@ function init() {
 
   uiController.getProjectsDOM().addEventListener('click', (e) => {
     const prevCard = uiController.getHighlightedProjectCard();
+    const prevId = prevCard?.dataset.id;
     const card = uiController.getProjectCard(e);
     const id = card?.dataset.id;
+
+    if (id === prevId) {
+      return;
+    }
 
     if (id) {
       const project = projectController.selectProject(id);
@@ -25,6 +30,12 @@ function init() {
         uiController.renderCard(prevCard, prevProject);
       }
     }
+  });
+
+  document.addEventListener('projChange', (e) => {
+    const project = projectController.getProjectById(e.detail.id);
+    const card = uiController.getProjectCardById(e.detail.id);
+    uiController.renderCard(card, project, true);
   });
 }
 

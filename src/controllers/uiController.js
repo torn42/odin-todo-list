@@ -14,6 +14,12 @@ function getProjectCard(e) {
   return e.target.closest('.project-card');
 }
 
+function getProjectCardById(id) {
+  return Array.from(getProjectsDOM().querySelectorAll('.project-card')).find(
+    (card) => card.dataset.id === id
+  );
+}
+
 function getHighlightedProjectCard() {
   return document.querySelector('.project-card.highlighted');
 }
@@ -37,5 +43,6 @@ export const uiController = {
   renderCard,
   getProjectsDOM,
   getProjectCard,
+  getProjectCardById,
   getHighlightedProjectCard,
 };

@@ -1,5 +1,6 @@
 import { Project } from '../models/project';
 import { colors } from '../consts/colors';
+import { Todo } from '../models/todo';
 
 const { green, yellow, red, purple } = colors;
 
@@ -35,9 +36,95 @@ let projects = [
     color: purple,
   }),
   new Project({
-    title: 'project6',
-    description: 'description',
-    todos: [],
+    title: 'project6asdjfkl;dsajfkl;adsjkl;f',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    todos: [
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo example1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+      new Todo({
+        title: 'Todo example1',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+        dueDate: '18.06.2025, 17:23',
+        priority: 4,
+      }),
+    ],
     color: purple,
   }),
 ];

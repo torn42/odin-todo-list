@@ -1,3 +1,5 @@
+import { truncateText } from '../lib/truncateText';
+
 function projectCard(project, isSelected) {
   const card = document.createElement('article');
   card.classList.add('project-card');
@@ -13,14 +15,28 @@ function projectCard(project, isSelected) {
   description.classList.add('project-card__description');
   description.textContent = project.description;
 
-  const todos = document.createElement('div');
+  if (description.textContent.length > 55) {
+    description.textContent = truncateText(description.textContent);
+  }
+
+  const todos = document.createElement('ul');
   todos.classList.add('project-card__todos');
 
-  project.todos.forEach((todo) => {
-    const todoEl = document.createElement('p');
-    todoEl.textContent = todo.title;
-    todos.append(todo);
+  project.todos.slice(0, 6).forEach((todo) => {
+    const todoEl = document.createElement('li');
+    todoEl.classList.add('project-card__todo');
+    todoEl.textContent = truncateText(todo.title, 18);
+    todos.append(todoEl);
   });
+
+  if (project.todos.length > 7) {
+    const more = document.createElement('p');
+    more.style.fontSize = '1.2rem';
+    more.style.paddingLeft = '2rem';
+    more.textContent = '...';
+
+    todos.append(more);
+  }
 
   card.style.backgroundColor = project.color;
 
