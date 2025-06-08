@@ -11,4 +11,12 @@ export class Todo {
   changeStatus() {
     this.checked = !this.checked;
   }
+
+  setTitle(title) {
+    this.title = title;
+  }
+
+  setDescription(description) {
+    this.description = description;
+  }
 }

@@ -37,6 +37,19 @@ function init() {
     const card = uiController.getProjectCardById(e.detail.id);
     uiController.renderCard(card, project, true);
   });
+
+  document.addEventListener('selectTodo', (e) => {
+    const todo = projectController.getTodoById(e.detail.id);
+
+    uiController.renderModal(todo);
+  });
+
+  document.addEventListener('todoChange', () => {
+    const project = projectController.getCurrentProject();
+    const card = uiController.getProjectCardById(project.id);
+    uiController.renderSidebar(project);
+    uiController.renderCard(card, project, true);
+  });
 }
 
 export const appController = {

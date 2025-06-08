@@ -26,6 +26,11 @@ function projectCard(project, isSelected) {
     const todoEl = document.createElement('li');
     todoEl.classList.add('project-card__todo');
     todoEl.textContent = truncateText(todo.title, 18);
+
+    if (todo.checked) {
+      todoEl.classList.add('todo-done');
+    }
+
     todos.append(todoEl);
   });
 

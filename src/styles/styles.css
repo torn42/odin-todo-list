@@ -10,6 +10,10 @@ body {
   height: 100%;
 }
 
+.scroll-off {
+  overflow: hidden;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 4fr 25rem;
@@ -45,7 +49,8 @@ body {
   padding: 20px 30px 30px;
 }
 
-.sidebar-input {
+.sidebar-input,
+.modal-input {
   font-size: 1.5rem;
   border: 1px solid #adadadd6;
   border-radius: 10px;
@@ -55,7 +60,8 @@ body {
   position: relative;
 }
 
-.sidebar-textarea {
+.sidebar-textarea,
+.modal-textarea {
   font-size: 0.9rem;
   resize: none;
   width: 100%;
@@ -68,10 +74,14 @@ body {
   border: 1px solid red;
 }
 
-.sidebar-top {
+.sidebar-top,
+.modal-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.sidebar-top {
+  justify-content: space-between;
 }
 
 .sidebar-top_error {
@@ -88,14 +98,20 @@ body {
   max-width: 85%;
 }
 
-.sidebar-edit-icon svg {
+.sidebar-edit-icon svg,
+.modal-edit-icon svg {
   fill: #adadadd6;
   opacity: 0.5;
   transition: opacity 0.1s ease;
   cursor: pointer;
 }
 
-.sidebar-top:hover .sidebar-edit-icon svg {
+.modal-top .modal-edit-icon {
+  margin-left: auto;
+}
+
+.sidebar-top:hover .sidebar-edit-icon svg,
+.modal-top:hover .modal-edit-icon svg {
   opacity: 1;
 }
 
@@ -108,14 +124,16 @@ body {
   overflow: auto;
 }
 
-.sidebar-description {
+.sidebar-description,
+.modal-description {
   margin-top: 0.2rem;
   border: 1px solid rgb(172, 172, 172);
   border-radius: 10px;
   padding: 0.2rem 0.5rem;
 }
 
-.sidebar-description__button {
+.sidebar-description__button,
+.modal-description__button {
   border: none;
   background-color: transparent;
   color: #0e0e0e;
@@ -124,7 +142,8 @@ body {
   transition: opacity 0.1 ease;
 }
 
-.sidebar-description__button:hover {
+.sidebar-description__button:hover,
+.modal-description__button:hover {
   opacity: 1;
 }
 
@@ -156,43 +175,51 @@ body {
   fill: #bbbbbbb3;
 }
 
-.sidebar-actions {
+.sidebar-actions,
+.modal-actions {
   display: flex;
   gap: 0.5rem;
   border-top: 1px solid #dbdbdbd6;
   padding-top: 30px;
 }
 
-.sidebar-actions button {
+.sidebar-actions button,
+.modal-actions button {
   border-radius: 15px;
   padding: 0.5rem 1.5rem;
   font-weight: 500;
   font-size: 1.25rem;
 }
 
-.sidebar-actions button:hover {
+.sidebar-actions button:hover,
+.modal-actions button:hover {
   cursor: pointer;
 }
 
-.sidebar-save {
+.sidebar-save,
+.modal-save {
   flex-basis: 45%;
   background-color: rgb(99, 202, 99);
   border: 3px solid rgb(0, 0, 0, 0.1);
   color: white;
 }
 
-.sidebar-actions button:active {
+.sidebar-actions button:active,
+.modal-actions button:active {
   transform: translateY(2px);
 }
 
 .sidebar-save:disabled,
-.sidebar-cancel:disabled {
+.sidebar-cancel:disabled,
+.modal-save:disabled,
+.modal-cancel:disabled {
   background-color: #d6d6d6d6;
   border: 3px solid rgb(0, 0, 0, 0.1);
   color: rgb(177, 177, 177);
 }
 
-.sidebar-cancel {
+.sidebar-cancel,
+.modal-cancel {
   flex-basis: 55%;
   background-color: #d6d6d6d6;
   border: 3px solid rgb(0, 0, 0, 0.1);
@@ -255,4 +282,40 @@ body {
 .project-create:hover {
   cursor: pointer;
   border: 3px solid #adadadd6;
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-description {
+  margin-top: 0.2rem;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+}
+
+.modal-checkbox {
+  margin-right: 5px;
+}
+
+.todo-done {
+  text-decoration: line-through;
 }

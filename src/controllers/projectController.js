@@ -143,6 +143,10 @@ function getCurrentProject() {
   return currentProject;
 }
 
+function getTodoById(id) {
+  return currentProject.todos.find((todo) => todo.id === id);
+}
+
 function selectProject(id) {
   currentProject = projects.find((project) => project.id === id);
   return currentProject;
@@ -152,5 +156,6 @@ export const projectController = {
   getProjects,
   getProjectById,
   getCurrentProject,
+  getTodoById,
   selectProject,
 };

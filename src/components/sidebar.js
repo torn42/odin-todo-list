@@ -148,8 +148,21 @@ function sidebar(project) {
     const el = document.createElement('li');
     el.classList.add('sidebar-todo');
     el.textContent = todo.title;
+    el.dataset.id = todo.id;
+
+    if (todo.checked) {
+      el.classList.add('todo-done');
+    }
 
     todos.append(el);
+  });
+
+  todos.addEventListener('click', (e) => {
+    const id = e.target.closest('.sidebar-todo')?.dataset.id;
+    const event = new CustomEvent('selectTodo', {
+      detail: { id },
+    });
+    document.dispatchEvent(event);
   });
 
   const top = document.createElement('div');

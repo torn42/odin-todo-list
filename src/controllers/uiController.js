@@ -1,3 +1,4 @@
+import modal from '../components/modal';
 import projectCard from '../components/projectCard';
 import sidebar from '../components/sidebar';
 
@@ -37,10 +38,15 @@ function renderCard(card, project, isSelected = false) {
   card.replaceWith(update);
 }
 
+function renderModal(todo) {
+  document.querySelector('#root').append(modal(todo));
+}
+
 export const uiController = {
   render,
   renderSidebar,
   renderCard,
+  renderModal,
   getProjectsDOM,
   getProjectCard,
   getProjectCardById,
