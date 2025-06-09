@@ -156,7 +156,6 @@ function modal(todo) {
 
   checkbox.addEventListener('change', () => {
     todo.changeStatus();
-    ('click');
 
     if (todo.checked) {
       title.classList.add('todo-done');

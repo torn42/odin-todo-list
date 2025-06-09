@@ -1,3 +1,4 @@
+import { add } from 'date-fns';
 import { truncateText } from '../lib/truncateText';
 
 function sidebar(project) {
@@ -70,9 +71,11 @@ function sidebar(project) {
         title.textContent = tempTitle;
         input.replaceWith(title);
         top.append(editTitle);
+        saveBtn.disabled = false;
       } else {
         top.append(errorMessage);
         top.classList.add('sidebar-top_error');
+        saveBtn.disabled = true;
       }
     });
 
@@ -144,6 +147,17 @@ function sidebar(project) {
 
   const todos = document.createElement('ul');
 
+  const addTodo = document.createElement('li');
+  addTodo.classList.add('sidebar-todo', 'sidebar-add');
+  addTodo.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" 
+            viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+            </svg>
+            `;
+
+  todos.append(addTodo);
+
   project.todos.forEach((todo) => {
     const el = document.createElement('li');
     el.classList.add('sidebar-todo');
@@ -164,11 +178,21 @@ function sidebar(project) {
   });
 
   todos.addEventListener('click', (e) => {
-    const id = e.target.closest('.sidebar-todo')?.dataset.id;
-    const event = new CustomEvent('selectTodo', {
-      detail: { id },
-    });
-    document.dispatchEvent(event);
+    const el = e.target.closest('.sidebar-todo');
+
+    if (!el) return;
+
+    const id = el.dataset?.id;
+
+    if (id) {
+      const event = new CustomEvent('todoSelect', {
+        detail: { id },
+      });
+      document.dispatchEvent(event);
+    } else {
+      const event = new CustomEvent('todoCreate', {});
+      document.dispatchEvent(event);
+    }
   });
 
   const top = document.createElement('div');

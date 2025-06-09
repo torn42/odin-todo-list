@@ -8,7 +8,7 @@ export class Project {
   }
 
   addTodo(todo) {
-    this.todos.push(todo);
+    this.todos.unshift(todo);
   }
 
   removeTodo(id) {

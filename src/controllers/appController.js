@@ -3,6 +3,8 @@ import projectsWrapper from '../components/projectsWrapper';
 import { projectController } from './projectController';
 import { uiController } from './uiController';
 import { colors } from '../consts/colors';
+import { format } from 'date-fns';
+import { Todo } from '../models/todo';
 
 const { yellow, red, green, purple } = colors;
 
@@ -31,7 +33,7 @@ const handlers = {
     }
   },
   projCreate: () => {
-    const num = projectController.getProjects().length;
+    const num = projectController.getProjects().length + 1;
     projectController.createProject({
       title: `New Project ${num}`,
       description: `Description of the project ${num}`,
@@ -62,10 +64,24 @@ const handlers = {
     uiController.renderSidebar();
     uiController.renderCard(card, project, false);
   },
-  selectTodo: (e) => {
+  todoSelect: (e) => {
     const todo = projectController.getTodoById(e.detail.id);
 
     uiController.renderModal(todo);
+  },
+  todoCreate: () => {
+    const project = projectController.getCurrentProject();
+    const num = project.todos.length + 1;
+    project.addTodo(
+      new Todo({
+        title: `New todo ${num}`,
+        description: `Description of the todo ${num}`,
+        dueDate: `${format(new Date(), "yyyy-MM-dd'T'HH:mm")}`,
+        priority: 1,
+      })
+    );
+
+    uiController.renderSidebar(project);
   },
   todoChange: () => {
     const project = projectController.getCurrentProject();
@@ -85,11 +101,16 @@ const handlers = {
 
 function init() {
   const root = document.querySelector('#root');
+  projectController.loadProjects();
   const projects = projectController.getProjects();
+  console.log(projects);
   uiController.render(root, layout(projectsWrapper(projects)));
 
   Object.entries(handlers).forEach(([event, handler]) => {
-    document.addEventListener(event, handler);
+    document.addEventListener(event, (e) => {
+      handler(e);
+      projectController.saveProjects();
+    });
   });
 }
 

@@ -362,3 +362,20 @@ body {
   display: flex;
   gap: 0.5rem;
 }
+
+.sidebar-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefefd6;
+  margin-bottom: 0.2rem;
+}
+
+.sidebar-add svg {
+  fill: #0e0e0e;
+  transition: fill 0.2s ease;
+}
+
+.sidebar-add:hover svg {
+  fill: white;
+}

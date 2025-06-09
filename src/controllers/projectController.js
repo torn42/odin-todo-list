@@ -6,130 +6,28 @@ const { green, yellow, red, purple } = colors;
 
 let projects = [
   new Project({
-    title: 'project1',
-    description: 'description',
+    title: 'New project 1',
+    description: 'Description of the project 1',
     todos: [],
     color: yellow,
-  }),
-  new Project({
-    title: 'project2',
-    description: 'description',
-    todos: [],
-    color: red,
-  }),
-  new Project({
-    title: 'project3',
-    description: 'description',
-    todos: [],
-    color: green,
-  }),
-  new Project({
-    title: 'project4',
-    description: 'description',
-    todos: [],
-    color: yellow,
-  }),
-  new Project({
-    title: 'project5',
-    description: 'description',
-    todos: [],
-    color: purple,
-  }),
-  new Project({
-    title: 'project6asdjfkl;dsajfkl;adsjkl;f',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    todos: [
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo example1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-      new Todo({
-        title: 'Todo example1',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '2025-06-11T17:18',
-        priority: 4,
-      }),
-    ],
-    color: purple,
   }),
 ];
 
 let currentProject = null;
+
+function loadProjects() {
+  projects = JSON.parse(localStorage.getItem('projects')).map((project) => {
+    project = new Project(project);
+    project.todos = project.todos.map((todo) => new Todo(todo));
+
+    return project;
+  });
+  console.log(projects);
+}
+
+function saveProjects() {
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
 
 function getProjects() {
   return [...projects];
@@ -169,4 +67,6 @@ export const projectController = {
   selectProject,
   createProject,
   deleteProject,
+  saveProjects,
+  loadProjects,
 };
