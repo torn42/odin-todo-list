@@ -44,84 +44,84 @@ let projects = [
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo examdasdaskdasjl;d;asjkldjaskl;ple1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo example1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
       new Todo({
         title: 'Todo example1',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-        dueDate: '18.06.2025, 17:23',
+        dueDate: '2025-06-11T17:18',
         priority: 4,
       }),
     ],
@@ -152,10 +152,21 @@ function selectProject(id) {
   return currentProject;
 }
 
+function createProject(project) {
+  projects.push(new Project(project));
+}
+
+function deleteProject(id) {
+  projects = projects.filter((project) => project.id !== id);
+  currentProject = null;
+}
+
 export const projectController = {
   getProjects,
   getProjectById,
   getCurrentProject,
   getTodoById,
   selectProject,
+  createProject,
+  deleteProject,
 };

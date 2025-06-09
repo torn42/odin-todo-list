@@ -2,6 +2,12 @@ function createProjectCard() {
   const card = document.createElement('div');
   card.classList.add('project-card', 'project-create');
 
+  card.addEventListener('click', () => {
+    const event = new CustomEvent('projCreate', {});
+
+    document.dispatchEvent(event);
+  });
+
   const icon = document.createElement('div');
   icon.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" 

@@ -38,6 +38,10 @@ function renderCard(card, project, isSelected = false) {
   card.replaceWith(update);
 }
 
+function removeCard(card) {
+  card.remove();
+}
+
 function renderModal(todo) {
   document.querySelector('#root').append(modal(todo));
 }
@@ -51,4 +55,5 @@ export const uiController = {
   getProjectCard,
   getProjectCardById,
   getHighlightedProjectCard,
+  removeCard,
 };

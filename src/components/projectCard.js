@@ -7,6 +7,14 @@ function projectCard(project, isSelected) {
     card.classList.add('highlighted');
   }
 
+  card.addEventListener('click', () => {
+    const event = new CustomEvent('projSelect', {
+      detail: { card },
+    });
+
+    document.dispatchEvent(event);
+  });
+
   const title = document.createElement('h3');
   title.classList.add('project-card__title');
   title.textContent = project.title;

@@ -12,11 +12,10 @@ export class Todo {
     this.checked = !this.checked;
   }
 
-  setTitle(title) {
+  setData({ title, description, dueDate, priority }) {
     this.title = title;
-  }
-
-  setDescription(description) {
     this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
   }
 }

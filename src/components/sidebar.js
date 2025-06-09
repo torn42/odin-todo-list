@@ -97,7 +97,7 @@ function sidebar(project) {
         description.textContent = tempDescription;
       }
 
-      console.log(tempDescription);
+      tempDescription;
       input.replaceWith(description);
     });
 
@@ -150,6 +150,12 @@ function sidebar(project) {
     el.textContent = todo.title;
     el.dataset.id = todo.id;
 
+    const priority = document.createElement('span');
+    priority.classList.add('sidebar-todo__priority');
+    priority.textContent = todo.priority;
+
+    el.append(priority);
+
     if (todo.checked) {
       el.classList.add('todo-done');
     }
@@ -191,13 +197,27 @@ function sidebar(project) {
   cancelBtn.classList.add('sidebar-cancel');
   cancelBtn.textContent = 'Cancel';
 
-  cancelBtn.addEventListener('click', () => {});
+  cancelBtn.addEventListener('click', () => {
+    const event = new CustomEvent('projCancel', {});
+
+    document.dispatchEvent(event);
+  });
 
   const actions = document.createElement('div');
   actions.classList.add('sidebar-actions');
   actions.append(saveBtn, cancelBtn);
 
-  sidebar.append(top, content, actions);
+  const deleteBtn = document.createElement('button');
+  deleteBtn.classList.add('delete-button');
+  deleteBtn.textContent = 'Delete';
+
+  deleteBtn.addEventListener('click', () => {
+    const event = new CustomEvent('projDelete', {});
+
+    document.dispatchEvent(event);
+  });
+
+  sidebar.append(top, content, actions, deleteBtn);
 
   return sidebar;
 }
