@@ -16,13 +16,16 @@ let projects = [
 let currentProject = null;
 
 function loadProjects() {
-  projects = JSON.parse(localStorage.getItem('projects')).map((project) => {
-    project = new Project(project);
-    project.todos = project.todos.map((todo) => new Todo(todo));
+  const loaded = JSON.parse(localStorage.getItem('projects'));
 
-    return project;
-  });
-  console.log(projects);
+  if (loaded) {
+    projects = loaded.map((project) => {
+      project = new Project(project);
+      project.todos = project.todos.map((todo) => new Todo(todo));
+
+      return project;
+    });
+  }
 }
 
 function saveProjects() {

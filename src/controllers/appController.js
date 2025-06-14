@@ -103,7 +103,7 @@ function init() {
   const root = document.querySelector('#root');
   projectController.loadProjects();
   const projects = projectController.getProjects();
-  console.log(projects);
+  projects;
   uiController.render(root, layout(projectsWrapper(projects)));
 
   Object.entries(handlers).forEach(([event, handler]) => {
